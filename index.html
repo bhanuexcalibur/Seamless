@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhanu Kumar x Seamless.AI · Proof of Work</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Azeret+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink:       #0f0e0c;
+  --ink2:      #1c1b18;
+  --ink3:      #2e2c28;
+  --paper:     #f5f2ec;
+  --paper2:    #ede9e0;
+  --paper3:    #e2ddd3;
+  --mid:       #7a7568;
+  --faint:     #b5b0a5;
+  --orange:    #e85d2f;
+  --orange-d:  rgba(232,93,47,0.12);
+  --orange-g:  rgba(232,93,47,0.25);
+  --serif:     'Playfair Display', Georgia, serif;
+  --sans:      'Plus Jakarta Sans', system-ui, sans-serif;
+  --mono:      'Azeret Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.4;
+}
+
+/* NAV */
+.nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(245,242,236,0.92);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--paper3);
+  padding: 0 5vw;
+}
+.nav-i {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 58px; gap: 16px;
+}
+.nav-logo { font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; color: var(--ink); }
+.nav-logo .sep { color: var(--faint); margin: 0 6px; }
+.nav-links { display: flex; gap: 2px; flex-wrap: wrap; }
+.npill {
+  font-size: 12px; font-weight: 500; padding: 6px 14px;
+  border-radius: 4px; color: var(--mid); text-decoration: none;
+  transition: all 0.15s; white-space: nowrap; border: 1px solid transparent;
+}
+.npill:hover { border-color: var(--paper3); color: var(--ink); background: var(--paper2); }
+.npill.cta { background: var(--ink); color: var(--paper); border-color: var(--ink); font-weight: 600; }
+.npill.cta:hover { background: var(--orange); border-color: var(--orange); }
+@media(max-width:640px){ .nav-links { display: none; } }
+
+/* HERO */
+.hero {
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 88vh; border-bottom: 1px solid var(--paper3);
+}
+.hero-left {
+  background: var(--ink); color: var(--paper);
+  padding: clamp(48px,7vw,96px) clamp(32px,5vw,72px);
+  display: flex; flex-direction: column; justify-content: space-between;
+  position: relative; overflow: hidden;
+}
+.hero-left::after {
+  content: ''; position: absolute; bottom: -80px; right: -80px;
+  width: 360px; height: 360px;
+  background: radial-gradient(circle, var(--orange-g) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--orange);
+  margin-bottom: 40px; display: flex; align-items: center; gap: 10px;
+}
+.eyebrow-line { height: 1px; width: 32px; background: var(--orange); }
+.hero-title {
+  font-family: var(--serif); font-size: clamp(44px,6.5vw,88px);
+  line-height: 0.93; letter-spacing: -0.02em; color: var(--paper); margin-bottom: 32px;
+}
+.hero-title .italic { font-style: italic; color: var(--orange); }
+.hero-sub {
+  font-size: clamp(15px,1.6vw,17px); color: rgba(245,242,236,0.58);
+  line-height: 1.75; font-weight: 300; max-width: 440px; margin-bottom: 48px;
+}
+.hero-sub strong { color: var(--paper); font-weight: 500; }
+.hero-meta {
+  font-family: var(--mono); font-size: 11px;
+  color: rgba(245,242,236,0.35); line-height: 2.1; letter-spacing: 0.04em;
+}
+.hero-meta a { color: rgba(245,242,236,0.45); text-decoration: none; transition: color 0.15s; }
+.hero-meta a:hover { color: var(--orange); }
+
+.hero-right {
+  background: var(--paper);
+  padding: clamp(48px,7vw,96px) clamp(32px,5vw,72px);
+  display: flex; flex-direction: column; justify-content: space-between;
+  border-left: 1px solid var(--paper3);
+}
+.hero-toc-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--faint); margin-bottom: 24px;
+}
+.toc-list { list-style: none; display: flex; flex-direction: column; }
+.toc-item { border-bottom: 1px solid var(--paper3); }
+.toc-link {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 0; text-decoration: none; color: var(--ink);
+  transition: all 0.15s; gap: 12px;
+}
+.toc-link:hover { padding-left: 8px; color: var(--orange); }
+.toc-link:hover .toc-arrow { color: var(--orange); transform: translateX(3px); }
+.toc-num { font-family: var(--mono); font-size: 10px; color: var(--faint); flex-shrink: 0; }
+.toc-name { flex: 1; font-size: 15px; font-weight: 500; }
+.toc-arrow { font-size: 14px; color: var(--faint); transition: all 0.15s; }
+
+.hero-badge { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--paper3); }
+.badge-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--faint); margin-bottom: 10px;
+}
+.badge-text { font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--ink); line-height: 1.4; }
+
+@media(max-width:860px){
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { border-left: none; border-top: 1px solid var(--paper3); }
+  .hero-left { min-height: 60vh; }
+}
+
+/* SECTION CHROME */
+.section-wrap { max-width: 1200px; margin: 0 auto; padding: 0 5vw; }
+section { padding: 80px 0; border-bottom: 1px solid var(--paper3); }
+section:last-child { border-bottom: none; }
+
+.sec-head { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 48px; }
+.sec-tag {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--orange); background: var(--orange-d);
+  border: 1px solid rgba(232,93,47,0.2); padding: 4px 12px;
+  border-radius: 3px; white-space: nowrap; margin-top: 6px;
+}
+.sec-title {
+  font-family: var(--serif); font-size: clamp(26px,3.5vw,42px);
+  line-height: 1.08; letter-spacing: -0.02em;
+}
+.sec-title em { font-style: italic; color: var(--orange); }
+
+/* SECTION 01: MESSAGING AUDIT */
+.audit-shell { background: var(--ink); color: var(--paper); border-radius: 12px; overflow: hidden; }
+.audit-topbar {
+  padding: 22px 28px; border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 14px; background: rgba(0,0,0,0.15);
+}
+.audit-topbar-left h3 { font-family: var(--serif); font-size: 18px; font-weight: 700; margin-bottom: 3px; }
+.audit-topbar-left p { font-size: 13px; color: rgba(245,242,236,0.4); font-family: var(--mono); }
+
+.persona-tabs {
+  display: flex; gap: 4px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px; padding: 3px;
+}
+.ptab {
+  font-family: var(--mono); font-size: 11px; padding: 6px 14px;
+  border: none; background: transparent; color: rgba(245,242,236,0.4);
+  cursor: pointer; border-radius: 4px; transition: all 0.18s;
+  white-space: nowrap; letter-spacing: 0.04em;
+}
+.ptab.on { background: var(--orange); color: #fff; }
+
+.audit-body { padding: 32px 28px; }
+.audit-panel { display: none; }
+.audit-panel.on { display: block; }
+
+.compare-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px;
+}
+@media(max-width:600px){ .compare-grid { grid-template-columns: 1fr; } }
+
+.msg-box { border-radius: 8px; padding: 20px 22px; }
+.msg-box.before { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); }
+.msg-box.after { background: var(--orange-d); border: 1px solid rgba(232,93,47,0.25); }
+.msg-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+  text-transform: uppercase; margin-bottom: 12px;
+}
+.msg-box.before .msg-label { color: rgba(245,242,236,0.3); }
+.msg-box.after .msg-label { color: var(--orange); }
+.msg-box p { font-size: 14px; line-height: 1.7; color: rgba(245,242,236,0.65); font-weight: 300; }
+.msg-box p strong { color: var(--paper); font-weight: 500; }
+.msg-box p em { font-style: italic; color: var(--paper); }
+
+.audit-insight {
+  background: rgba(232,93,47,0.08); border-left: 3px solid var(--orange);
+  border-radius: 0 8px 8px 0; padding: 16px 20px;
+  font-size: 14px; color: rgba(245,242,236,0.65); line-height: 1.72; font-weight: 300;
+}
+.audit-insight strong { color: var(--paper); font-weight: 500; }
+
+/* SECTION 02: GTM BRIEF */
+.gtm-shell {
+  border: 1px solid var(--paper3); border-radius: 12px;
+  overflow: hidden; background: var(--paper);
+}
+.gtm-header {
+  padding: 26px 32px; border-bottom: 1px solid var(--paper3);
+  background: var(--paper2);
+  display: flex; align-items: flex-start; justify-content: space-between;
+  flex-wrap: wrap; gap: 14px;
+}
+.gtm-header h3 {
+  font-family: var(--serif); font-size: 20px; font-weight: 700;
+  letter-spacing: -0.01em; margin-bottom: 4px;
+}
+.gtm-header p { font-size: 13px; color: var(--mid); font-family: var(--mono); }
+.gtm-badge {
+  font-family: var(--mono); font-size: 10px; color: var(--orange);
+  border: 1px solid rgba(232,93,47,0.3); background: var(--orange-d);
+  padding: 5px 12px; border-radius: 3px; letter-spacing: 0.08em;
+  text-transform: uppercase; white-space: nowrap; align-self: flex-start;
+}
+.gtm-body { display: grid; grid-template-columns: 1fr 1fr; }
+@media(max-width:700px){ .gtm-body { grid-template-columns: 1fr; } }
+
+.gtm-cell {
+  padding: 28px 32px; border-right: 1px solid var(--paper3); border-bottom: 1px solid var(--paper3);
+}
+.gtm-cell:nth-child(2n) { border-right: none; }
+.gtm-cell.full { grid-column: 1/-1; border-right: none; }
+
+.gtm-cell h4 {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--orange);
+  margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--paper3);
+}
+.gtm-cell p { font-size: 14px; color: var(--mid); line-height: 1.75; margin-bottom: 8px; }
+.gtm-cell p:last-child { margin-bottom: 0; }
+.gtm-cell p strong { color: var(--ink); font-weight: 600; }
+.gtm-cell p em { font-style: italic; color: var(--ink3); }
+
+.tl-rows { display: flex; flex-direction: column; margin-top: 16px; }
+.tl-row {
+  display: grid; grid-template-columns: 90px 1fr; gap: 20px;
+  padding: 16px 0; border-bottom: 1px solid var(--paper3); align-items: flex-start;
+}
+.tl-row:last-child { border-bottom: none; }
+.tl-wk {
+  font-family: var(--mono); font-size: 10px; color: var(--orange);
+  text-transform: uppercase; letter-spacing: 0.08em; padding-top: 3px;
+}
+.tl-txt { font-size: 14px; color: var(--mid); line-height: 1.68; }
+.tl-txt strong { color: var(--ink); font-weight: 600; }
+
+.kpi-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 16px; }
+@media(max-width:480px){ .kpi-row { grid-template-columns: 1fr 1fr; } }
+
+.kpi-chip { background: var(--paper2); border: 1px solid var(--paper3); border-radius: 8px; padding: 16px; }
+.kpi-lbl {
+  font-family: var(--mono); font-size: 10px; color: var(--faint);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;
+}
+.kpi-val {
+  font-family: var(--serif); font-size: 22px; font-weight: 700;
+  color: var(--orange); line-height: 1; margin-bottom: 5px;
+}
+.kpi-desc { font-size: 12px; color: var(--mid); line-height: 1.5; }
+
+/* SECTION 03: COMPETITIVE POSITIONING */
+.comp-intro {
+  font-size: 16px; color: var(--mid); line-height: 1.78;
+  max-width: 680px; margin-bottom: 36px;
+}
+.comp-intro strong { color: var(--ink); font-weight: 600; }
+
+.comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+@media(max-width:680px){ .comp-grid { grid-template-columns: 1fr; } }
+
+.comp-card {
+  background: var(--paper); border: 1px solid var(--paper3);
+  border-radius: 10px; padding: 26px; transition: border-color 0.2s;
+}
+.comp-card:hover { border-color: var(--orange); }
+.comp-card.highlight { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.comp-card-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--faint); margin-bottom: 10px;
+}
+.comp-card.highlight .comp-card-label { color: var(--orange); }
+.comp-card h3 {
+  font-family: var(--serif); font-size: 17px; font-weight: 700;
+  letter-spacing: -0.01em; margin-bottom: 10px; line-height: 1.25;
+}
+.comp-card.highlight h3 { color: var(--paper); }
+.comp-card p { font-size: 14px; color: var(--mid); line-height: 1.7; }
+.comp-card.highlight p { color: rgba(245,242,236,0.62); }
+.comp-card.highlight p strong { color: var(--paper); }
+.comp-card p strong { color: var(--ink); font-weight: 600; }
+
+.comp-table-wrap {
+  background: var(--ink); border-radius: 12px; overflow: hidden; margin-top: 6px;
+}
+.comp-table-head {
+  padding: 20px 26px; border-bottom: 1px solid rgba(255,255,255,0.07);
+  background: rgba(0,0,0,0.15);
+}
+.comp-table-head h4 {
+  font-family: var(--serif); font-size: 17px; font-weight: 700; color: var(--paper);
+}
+.comp-table-head p { font-size: 13px; color: rgba(245,242,236,0.38); margin-top: 3px; }
+.comp-scroll { overflow-x: auto; }
+
+table.comp-tbl { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 620px; }
+table.comp-tbl thead th {
+  padding: 12px 18px; text-align: left;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(245,242,236,0.32);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+table.comp-tbl thead th.hl { color: var(--orange); }
+table.comp-tbl tbody td {
+  padding: 13px 18px; border-bottom: 1px solid rgba(255,255,255,0.05);
+  color: rgba(245,242,236,0.55); font-weight: 300; vertical-align: top; line-height: 1.55;
+}
+table.comp-tbl tbody td.feat { color: rgba(245,242,236,0.38); font-family: var(--mono); font-size: 12px; }
+table.comp-tbl tbody td.seamless-col { color: var(--paper); font-weight: 500; background: rgba(232,93,47,0.06); }
+table.comp-tbl tbody tr:last-child td { border-bottom: none; }
+table.comp-tbl tbody tr:hover td { background: rgba(255,255,255,0.02); }
+table.comp-tbl tbody tr:hover td.seamless-col { background: rgba(232,93,47,0.1); }
+
+.win { color: #5cc87a; font-weight: 500; }
+.partial { color: #e8b84b; }
+.gap { color: rgba(245,242,236,0.28); }
+
+/* SECTION 04: PERSONA MAP */
+.persona-intro {
+  font-size: 16px; color: var(--mid); line-height: 1.78;
+  max-width: 680px; margin-bottom: 36px;
+}
+.persona-intro strong { color: var(--ink); font-weight: 600; }
+
+.persona-cards { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-bottom: 20px; }
+@media(max-width:780px){ .persona-cards { grid-template-columns: 1fr 1fr; } }
+@media(max-width:480px){ .persona-cards { grid-template-columns: 1fr; } }
+
+.pcard {
+  background: var(--paper); border: 1px solid var(--paper3);
+  border-radius: 10px; padding: 20px; cursor: pointer;
+  transition: all 0.2s; user-select: none;
+}
+.pcard:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(15,14,12,0.06); }
+.pcard.on { border-color: var(--orange); background: var(--orange-d); box-shadow: 0 0 0 1px var(--orange); }
+.pcard-icon { font-size: 24px; margin-bottom: 12px; display: block; }
+.pcard-role { font-family: var(--serif); font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 5px; }
+.pcard-hint { font-size: 12px; color: var(--mid); line-height: 1.5; }
+
+.persona-output {
+  border: 1px solid var(--paper3); border-radius: 10px;
+  padding: 32px 36px; display: none; animation: fadeUp 0.25s ease;
+}
+.persona-output.on { display: block; }
+@keyframes fadeUp { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: none; } }
+
+.po-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+.po-headline { font-family: var(--serif); font-size: clamp(20px,2.8vw,32px); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 14px; }
+.po-body { font-size: 15px; color: var(--mid); line-height: 1.78; }
+.po-body strong { color: var(--ink); font-weight: 600; }
+
+.persona-prompt {
+  background: var(--paper2); border: 1px solid var(--paper3);
+  border-radius: 8px; padding: 20px 24px; text-align: center;
+  font-size: 14px; color: var(--faint); font-style: italic;
+}
+
+.icp-wrap { background: var(--ink); color: var(--paper); border-radius: 10px; overflow: hidden; margin-top: 16px; }
+.icp-head { padding: 18px 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.icp-head h4 { font-family: var(--serif); font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.icp-head p { font-size: 13px; color: rgba(245,242,236,0.38); }
+.icp-scroll { overflow-x: auto; }
+table.icp-tbl { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 580px; }
+table.icp-tbl thead th {
+  padding: 12px 18px; text-align: left; font-family: var(--mono);
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(245,242,236,0.35); border-bottom: 1px solid rgba(255,255,255,0.07);
+  background: rgba(0,0,0,0.2);
+}
+table.icp-tbl tbody td {
+  padding: 14px 18px; border-bottom: 1px solid rgba(255,255,255,0.05);
+  color: rgba(245,242,236,0.6); font-weight: 300; vertical-align: top; line-height: 1.6;
+}
+table.icp-tbl tbody td:first-child { color: var(--paper); font-weight: 500; }
+table.icp-tbl tbody tr:last-child td { border-bottom: none; }
+table.icp-tbl tbody tr:hover td { background: rgba(255,255,255,0.02); }
+
+/* SECTION 05: COPY SAMPLES */
+.copy-intro { font-size: 16px; color: var(--mid); line-height: 1.78; max-width: 680px; margin-bottom: 40px; }
+.copy-intro strong { color: var(--ink); font-weight: 600; }
+
+.copy-card { border: 1px solid var(--paper3); border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
+.copy-topbar {
+  padding: 14px 24px; background: var(--paper2);
+  border-bottom: 1px solid var(--paper3);
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+}
+.copy-channel { font-family: var(--mono); font-size: 11px; color: var(--mid); text-transform: uppercase; letter-spacing: 0.1em; }
+.copy-badge { font-family: var(--mono); font-size: 10px; padding: 3px 10px; border-radius: 3px; letter-spacing: 0.06em; }
+.copy-badge.awareness { background: var(--orange-d); color: var(--orange); border: 1px solid rgba(232,93,47,0.2); }
+.copy-badge.activation { background: rgba(15,14,12,0.06); color: var(--ink); border: 1px solid var(--paper3); }
+.copy-badge.sales { background: rgba(34,140,90,0.1); color: #1a7a4e; border: 1px solid rgba(34,140,90,0.2); }
+.copy-body { padding: 28px 30px; }
+.copy-headline {
+  font-family: var(--serif); font-size: clamp(18px,2.5vw,26px);
+  line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 14px;
+}
+.copy-text { font-size: 15px; color: var(--mid); line-height: 1.78; margin-bottom: 18px; }
+.copy-why {
+  font-size: 13px; color: var(--faint); font-style: italic;
+  padding-top: 16px; border-top: 1px solid var(--paper3); line-height: 1.65;
+}
+.copy-why strong { color: var(--mid); font-style: normal; font-weight: 500; }
+
+/* SECTION 06: OTHER WORK */
+.work-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+@media(max-width:780px){ .work-grid { grid-template-columns: 1fr 1fr; } }
+@media(max-width:480px){ .work-grid { grid-template-columns: 1fr; } }
+
+.work-card {
+  background: var(--paper); border: 1px solid var(--paper3);
+  border-radius: 10px; padding: 24px; text-decoration: none;
+  display: flex; flex-direction: column; transition: all 0.2s;
+}
+.work-card:hover { border-color: var(--orange); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(232,93,47,0.08); }
+.work-tag { font-family: var(--mono); font-size: 10px; color: var(--faint); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+.work-card h4 { font-family: var(--serif); font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em; line-height: 1.25; }
+.work-card p { font-size: 13px; color: var(--mid); line-height: 1.65; flex: 1; }
+.work-arrow { display: block; font-size: 15px; color: var(--faint); margin-top: 16px; transition: all 0.2s; }
+.work-card:hover .work-arrow { color: var(--orange); transform: translateX(4px); }
+
+/* SIGNATURE */
+.sig-block { background: var(--ink); color: var(--paper); padding: clamp(48px,7vw,80px) 5vw; }
+.sig-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 32px;
+}
+.sig-name { font-family: var(--serif); font-size: clamp(28px,4vw,44px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 10px; }
+.sig-name em { font-style: italic; color: var(--orange); }
+.sig-details { font-size: 14px; color: rgba(245,242,236,0.45); line-height: 1.9; }
+.sig-details a { color: rgba(245,242,236,0.45); text-decoration: none; transition: color 0.15s; }
+.sig-details a:hover { color: var(--orange); }
+.sig-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.sbtn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 14px; font-weight: 600; padding: 14px 28px;
+  border-radius: 6px; text-decoration: none; transition: all 0.2s;
+}
+.sbtn.pri { background: var(--orange); color: #fff; border: 1px solid var(--orange); }
+.sbtn.pri:hover { opacity: 0.88; transform: translateY(-1px); }
+.sbtn.sec { background: transparent; color: rgba(245,242,236,0.65); border: 1px solid rgba(255,255,255,0.15); }
+.sbtn.sec:hover { border-color: rgba(255,255,255,0.35); color: var(--paper); }
+
+/* SCROLL REVEAL */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.reveal.in { opacity: 1; transform: none; }
+
+/* RESPONSIVE PATCHES */
+@media(max-width:600px){
+  section { padding: 56px 0; }
+  .audit-topbar { flex-direction: column; align-items: flex-start; }
+  .audit-body { padding: 24px 20px; }
+  .gtm-body { grid-template-columns: 1fr; }
+  .gtm-cell { border-right: none; }
+  .sig-inner { flex-direction: column; align-items: flex-start; }
+  .tl-row { grid-template-columns: 64px 1fr; }
+  .kpi-row { grid-template-columns: 1fr 1fr; }
+}
+@media(min-width:1400px){ .hero-title { font-size: 100px; } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-i">
+    <div class="nav-logo">Bhanu Kumar<span class="sep">x</span>Seamless.AI</div>
+    <div class="nav-links">
+      <a href="#audit"    class="npill">Messaging Audit</a>
+      <a href="#gtm"      class="npill">GTM Brief</a>
+      <a href="#compete"  class="npill">Competitive Lens</a>
+      <a href="#personas" class="npill">Personas</a>
+      <a href="#copy"     class="npill">Copy</a>
+      <a href="#work"     class="npill">Other Work</a>
+      <a href="mailto:bhanukumar0902@gmail.com" class="npill cta">Say hello</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div>
+      <div class="hero-eyebrow">
+        <span class="eyebrow-line"></span>
+        Proof of Work · Product Marketing
+      </div>
+      <h1 class="hero-title">
+        Seamless<br>
+        finds the<br>
+        <span class="italic">lead.</span><br>
+        Marketing<br>
+        makes it<br>
+        land.
+      </h1>
+      <p class="hero-sub">
+        Seamless.AI is sitting on something most B2B tools only dream about: <strong>a real-time data engine that actually works.</strong> The product is not the problem. The messaging is. This page is about fixing that.
+      </p>
+    </div>
+    <div class="hero-meta">
+      <strong style="color:rgba(245,242,236,0.75);display:block;margin-bottom:4px;">Bhanu Kumar</strong>
+      <a href="mailto:bhanukumar0902@gmail.com">bhanukumar0902@gmail.com</a><br>
+      <a href="https://linkedin.com/in/bhanuexcalibur" target="_blank" rel="noopener">linkedin.com/in/bhanuexcalibur</a> &nbsp;·&nbsp; <a href="https://x.com/excaliburbhanu" target="_blank" rel="noopener">@excaliburbhanu</a><br>
+      B2B SaaS PMM · April 2026
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div>
+      <div class="hero-toc-label">What's in here</div>
+      <ul class="toc-list">
+        <li class="toc-item">
+          <a class="toc-link" href="#audit">
+            <span class="toc-num">01</span>
+            <span class="toc-name">Messaging Audit — where the copy leaves pipeline on the table</span>
+            <span class="toc-arrow">&#8594;</span>
+          </a>
+        </li>
+        <li class="toc-item">
+          <a class="toc-link" href="#gtm">
+            <span class="toc-num">02</span>
+            <span class="toc-name">GTM Brief — how I'd launch Buyer Intent Signals</span>
+            <span class="toc-arrow">&#8594;</span>
+          </a>
+        </li>
+        <li class="toc-item">
+          <a class="toc-link" href="#compete">
+            <span class="toc-num">03</span>
+            <span class="toc-name">Competitive Lens — how to own the conversation vs. Apollo and ZoomInfo</span>
+            <span class="toc-arrow">&#8594;</span>
+          </a>
+        </li>
+        <li class="toc-item">
+          <a class="toc-link" href="#personas">
+            <span class="toc-num">04</span>
+            <span class="toc-name">Persona Map — four buyers, four different reasons to care</span>
+            <span class="toc-arrow">&#8594;</span>
+          </a>
+        </li>
+        <li class="toc-item">
+          <a class="toc-link" href="#copy">
+            <span class="toc-num">05</span>
+            <span class="toc-name">Copy Samples — three real touchpoints, written for real people</span>
+            <span class="toc-arrow">&#8594;</span>
+          </a>
+        </li>
+        <li class="toc-item">
+          <a class="toc-link" href="#work">
+            <span class="toc-num">06</span>
+            <span class="toc-name">Other Relevant Work</span>
+            <span class="toc-arrow">&#8594;</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="hero-badge">
+      <div class="badge-label">The thesis</div>
+      <div class="badge-text">"The data is real-time. The messaging should feel the same way — built for the moment a rep is staring at a cold prospect, not for a homepage visitor scrolling on a Tuesday."</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================================================
+     01 — MESSAGING AUDIT
+=================================================== -->
+<section id="audit">
+  <div class="section-wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Part 01</span>
+      <h2 class="sec-title">Where the current messaging<br><em>undersells</em> the product</h2>
+    </div>
+
+    <div class="audit-shell reveal">
+      <div class="audit-topbar">
+        <div class="audit-topbar-left">
+          <h3>Live Positioning Rewrite</h3>
+          <p>Seamless.AI's current copy vs. what I'd actually ship, per buyer</p>
+        </div>
+        <div class="persona-tabs">
+          <button class="ptab on" onclick="swAudit('sdr', this)">SDR</button>
+          <button class="ptab"    onclick="swAudit('ae', this)">AE</button>
+          <button class="ptab"    onclick="swAudit('revops', this)">RevOps</button>
+        </div>
+      </div>
+
+      <div class="audit-body">
+
+        <div class="audit-panel on" id="ap-sdr">
+          <div class="compare-grid">
+            <div class="msg-box before">
+              <div class="msg-label">&#x2715; Current framing</div>
+              <p>Seamless.AI helps you <strong>find and connect with your ideal customers</strong> using real-time B2B search, verified contact data, and AI-powered outreach tools.</p>
+            </div>
+            <div class="msg-box after">
+              <div class="msg-label">&#x2713; Rewrite for the SDR</div>
+              <p><em>You've got 80 dials to make today.</em> The difference between a good day and a great one is whether the number actually connects. Seamless.AI gives you verified cell phones, not office lines, so <strong>more of those 80 dials turn into real conversations</strong> instead of voicemail boxes.</p>
+            </div>
+          </div>
+          <div class="audit-insight">
+            <strong>What changed:</strong> "Find and connect with ideal customers" is what every data vendor says. An SDR's real problem isn't finding people — LinkedIn does that. It's getting a number that actually rings. Leading with 80 dials and voicemail is specific enough that any SDR reads it and thinks "that's exactly me." The product becomes proof of something they already feel, not a pitch for something abstract.
+          </div>
+        </div>
+
+        <div class="audit-panel" id="ap-ae">
+          <div class="compare-grid">
+            <div class="msg-box before">
+              <div class="msg-label">&#x2715; Current framing</div>
+              <p>Close more deals faster with <strong>AI-powered prospecting</strong> that gives you the most accurate contact and company data in real time.</p>
+            </div>
+            <div class="msg-box after">
+              <div class="msg-label">&#x2713; Rewrite for the AE</div>
+              <p>You're three meetings into a deal and you just found out the economic buyer is someone nobody mentioned. <strong>Seamless.AI surfaces the full buying committee</strong> — titles, direct lines, org structure — before your next call. Not after you lose the deal to it.</p>
+            </div>
+          </div>
+          <div class="audit-insight">
+            <strong>What changed:</strong> AEs don't prospect the way SDRs do — they navigate. Their pain is multi-threading and getting blindsided by stakeholders they didn't know existed. "Close more deals faster" is noise they've heard from every tool in their stack. A specific scenario — discovering a hidden economic buyer too late — is something every AE has lived. Make the scenario the opening, and the feature is the resolution.
+          </div>
+        </div>
+
+        <div class="audit-panel" id="ap-revops">
+          <div class="compare-grid">
+            <div class="msg-box before">
+              <div class="msg-label">&#x2715; Current framing</div>
+              <p>Seamless.AI integrates with your CRM and sales stack to keep your <strong>data clean and your pipeline moving.</strong></p>
+            </div>
+            <div class="msg-box after">
+              <div class="msg-label">&#x2713; Rewrite for RevOps</div>
+              <p>Bad contact data doesn't announce itself. It just quietly tanks your connect rates, inflates your bounce rate, and makes your attribution reports lie to you. <strong>Seamless.AI pushes verified, real-time data into your CRM automatically</strong> so what your team acts on is actually what's true right now.</p>
+            </div>
+          </div>
+          <div class="audit-insight">
+            <strong>What changed:</strong> A RevOps person managing data quality lives in a world where they don't know what they don't know. "Keep your data clean" sounds like a product feature. "Bad data quietly tanks your connect rates and makes your attribution lie" is the actual operational nightmare they're trying to solve. Name the invisible damage, then show the fix. Same product, completely different conversation.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================
+     02 — GTM BRIEF
+=================================================== -->
+<section id="gtm">
+  <div class="section-wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Part 02</span>
+      <h2 class="sec-title">Sample GTM Brief:<br><em>Buyer Intent Signals</em></h2>
+    </div>
+
+    <div class="gtm-shell reveal">
+      <div class="gtm-header">
+        <div>
+          <h3>From built to understood — how I'd run this launch</h3>
+          <p>Buyer Intent Signals launch brief · internal draft for illustration</p>
+        </div>
+        <div class="gtm-badge">Sample deliverable</div>
+      </div>
+
+      <div class="gtm-body">
+        <div class="gtm-cell">
+          <h4>What we're launching</h4>
+          <p>Buyer Intent Signals inside Seamless.AI — showing reps which accounts are actively researching solutions like theirs right now, surfaced directly in their prospecting workflow.</p>
+          <p>The insight isn't new. Bombora and G2 have sold intent data for years. <strong>What's new is where it lives.</strong> Intent data sitting in a separate tool is intent data nobody uses. Inside Seamless, it's visible at the exact moment a rep is building their list. That's the launch story.</p>
+        </div>
+
+        <div class="gtm-cell">
+          <h4>Who it's for first</h4>
+          <p>Existing Seamless.AI customers with sales teams of 10 or more reps. Specifically AEs and their managers who are already measuring pipeline quality — they already understand why a warm account is different from a cold one.</p>
+          <p>Secondary: outbound-heavy teams that tried intent tools elsewhere and gave up because <strong>the data never made it into their actual workflow.</strong> They're sold on the concept. They just stopped trusting the execution. We're the fix.</p>
+        </div>
+
+        <div class="gtm-cell">
+          <h4>The message that actually lands</h4>
+          <p>Not "AI-powered intent signals." That's a category description, not a message.</p>
+          <p>The real message: <em>Your best prospects are already looking. Seamless tells you who they are before your competitor calls them first.</em></p>
+          <p><strong>The urgency is built into the product.</strong> Intent signals decay fast. A prospect researching solutions today might sign somewhere in two weeks. The message should make that window feel real, not hypothetical.</p>
+        </div>
+
+        <div class="gtm-cell">
+          <h4>Why now</h4>
+          <p>Outbound costs are up. Connect rates are down. The old math — dial more, book more — doesn't hold the way it used to. Teams that survive this environment do it by being more precise, not louder.</p>
+          <p>Intent data is the precision layer. <strong>Q2 is when pipeline anxiety peaks.</strong> Deals from Q1 either closed or stalled, and the board wants to know what's coming. Reps are looking for any edge they can get right now. The timing is not a coincidence.</p>
+        </div>
+
+        <div class="gtm-cell full">
+          <h4>How the launch runs</h4>
+          <div class="tl-rows">
+            <div class="tl-row">
+              <div class="tl-wk">Week 1&ndash;2</div>
+              <div class="tl-txt"><strong>Warm up the power users first.</strong> Identify the top 200 most active Seamless accounts and give them early access. Brief their CSMs with a one-page talking track. Their word-of-mouth inside their own companies does more than any ad we can run — and it costs almost nothing to set up.</div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-wk">Week 3</div>
+              <div class="tl-txt"><strong>In-product launch for all existing users.</strong> The notification should feel like a tip, not an announcement. "We noticed you're prospecting into [industry]. These 14 accounts are actively researching solutions like yours right now." Make the first moment hyper-relevant. Generic doesn't get clicked.</div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-wk">Week 4&ndash;5</div>
+              <div class="tl-txt"><strong>Content on two tracks.</strong> One for sales managers (ROI angle: fewer wasted dials, better pipeline quality). One for individual reps (tactical: exactly how to use intent signals to prioritize the week). Both are SEO-targeted at "B2B buyer intent data" queries where we have room to own ground.</div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-wk">Week 6+</div>
+              <div class="tl-txt"><strong>Paid only after organic tells us what's working.</strong> No paid spend in the first five weeks. Let in-app activation data and content analytics show which message is converting, then put money behind it. We'll spend less and get more because we earned the insight first.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gtm-cell full" style="border-bottom:none;">
+          <h4>How we know it worked</h4>
+          <div class="kpi-row">
+            <div class="kpi-chip">
+              <div class="kpi-lbl">Primary</div>
+              <div class="kpi-val">Activation</div>
+              <div class="kpi-desc">% of notified users who filter by intent signal within 7 days of launch</div>
+            </div>
+            <div class="kpi-chip">
+              <div class="kpi-lbl">Secondary</div>
+              <div class="kpi-val">Meetings</div>
+              <div class="kpi-desc">Meeting booked rate from intent-flagged accounts vs. standard prospecting in the same cohort</div>
+            </div>
+            <div class="kpi-chip">
+              <div class="kpi-lbl">Retention signal</div>
+              <div class="kpi-val">Expansion</div>
+              <div class="kpi-desc">Seat expansion and plan upgrades among teams that activated intent signals within 30 days</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================
+     03 — COMPETITIVE LENS
+=================================================== -->
+<section id="compete">
+  <div class="section-wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Part 03</span>
+      <h2 class="sec-title">The competitive lens:<br><em>how to own the conversation</em></h2>
+    </div>
+
+    <p class="comp-intro reveal">
+      Apollo is growing fast. ZoomInfo is the incumbent every team already has an opinion about. Lusha and Clay are eating at the edges. Most B2B data tools are fighting on the same ground: accuracy, database size, integrations. <strong>That fight is a race to the bottom.</strong> Here's the angle that actually wins it.
+    </p>
+
+    <div class="comp-grid reveal">
+      <div class="comp-card highlight">
+        <div class="comp-card-label">The positioning opportunity</div>
+        <h3>Real-time is the whole story. Nobody else owns it the way Seamless can.</h3>
+        <p>ZoomInfo refreshes data quarterly. Apollo is good at volume, not recency. Lusha relies on community contributions. <strong>Seamless.AI actually crawls the web in real time</strong> — that's not a feature buried in a comparison table, that's the headline. The reason a number is wrong at a competitor is the same reason Seamless exists. That's the conversation to start, not end.</p>
+      </div>
+      <div class="comp-card">
+        <div class="comp-card-label">What the playbook looks like</div>
+        <h3>Lead with the cost of bad data, not the quality of good data.</h3>
+        <p>Every sales team already knows their data has problems. What they haven't done is calculate what it actually costs them. An SDR making 80 dials a day with a 60% bad number rate is wasting 48 dials daily. That's not a data quality conversation. <strong>That's a pipeline math conversation</strong> — and pipeline math is something a VP of Sales will stop scrolling to read.</p>
+      </div>
+    </div>
+
+    <div class="comp-table-wrap reveal">
+      <div class="comp-table-head">
+        <h4>Where Seamless.AI wins the comparison</h4>
+        <p>Based on public data, G2 reviews, and category positioning — not vendor marketing</p>
+      </div>
+      <div class="comp-scroll">
+        <table class="comp-tbl">
+          <thead>
+            <tr>
+              <th>What matters to buyers</th>
+              <th class="hl">Seamless.AI</th>
+              <th>ZoomInfo</th>
+              <th>Apollo.io</th>
+              <th>Lusha</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="feat">Real-time data crawling</td>
+              <td class="seamless-col"><span class="win">Yes — core architecture</span></td>
+              <td><span class="partial">Quarterly refresh</span></td>
+              <td><span class="partial">Periodic updates</span></td>
+              <td><span class="gap">Community sourced</span></td>
+            </tr>
+            <tr>
+              <td class="feat">Cell phone coverage</td>
+              <td class="seamless-col"><span class="win">Strong, direct dial focus</span></td>
+              <td><span class="partial">Good, expensive tier</span></td>
+              <td><span class="partial">Growing, inconsistent</span></td>
+              <td><span class="partial">Moderate</span></td>
+            </tr>
+            <tr>
+              <td class="feat">Ease of use for the actual rep</td>
+              <td class="seamless-col"><span class="win">Built for reps, not admins</span></td>
+              <td><span class="gap">Complex, enterprise-first</span></td>
+              <td><span class="win">Good UX, rep-friendly</span></td>
+              <td><span class="win">Simple, lightweight</span></td>
+            </tr>
+            <tr>
+              <td class="feat">Price point for SMB teams</td>
+              <td class="seamless-col"><span class="win">Accessible entry pricing</span></td>
+              <td><span class="gap">High, annual commit</span></td>
+              <td><span class="win">Freemium model</span></td>
+              <td><span class="partial">Mid-tier</span></td>
+            </tr>
+            <tr>
+              <td class="feat">G2 satisfaction score (2025)</td>
+              <td class="seamless-col"><span class="win">#1 Highest Satisfaction</span></td>
+              <td><span class="partial">Mid-tier</span></td>
+              <td><span class="partial">Strong, rising</span></td>
+              <td><span class="partial">Positive, niche</span></td>
+            </tr>
+            <tr>
+              <td class="feat">AI writing + outreach built in</td>
+              <td class="seamless-col"><span class="win">Yes, native</span></td>
+              <td><span class="partial">Via Chorus acquisition</span></td>
+              <td><span class="win">Yes, sequences built in</span></td>
+              <td><span class="gap">No</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="comp-grid reveal" style="margin-top:14px;">
+      <div class="comp-card">
+        <div class="comp-card-label">The ZoomInfo displacement play</div>
+        <h3>Most teams with ZoomInfo are paying for data they stopped trusting two renewals ago.</h3>
+        <p>ZoomInfo retention is built on switching cost, not satisfaction. The teams that stay do it because migrating feels painful, not because the data is good. <strong>The displacement message isn't "we're cheaper."</strong> It's "you're already working around their data — you just haven't done the math on what that costs yet." That's a conversation worth starting, and it's one Seamless can win.</p>
+      </div>
+      <div class="comp-card">
+        <div class="comp-card-label">The Apollo co-existence conversation</div>
+        <h3>Apollo users aren't leaving. They're adding Seamless for the data layer Apollo can't give them.</h3>
+        <p>Apollo's strength is sequences and engagement. Their data is getting better but real-time coverage is still a gap — especially cell phones. <strong>The play here isn't displacement, it's complementarity.</strong> "Use Apollo to run your sequences. Use Seamless to make sure the numbers you're sequencing are actually right." That's a message that doesn't require the rep to change anything. It just requires them to spend a bit more. That's a much easier yes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================
+     04 — PERSONA MAP
+=================================================== -->
+<section id="personas">
+  <div class="section-wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Part 04</span>
+      <h2 class="sec-title">Four buyers.<br><em>Four reasons</em> to care.</h2>
+    </div>
+
+    <p class="persona-intro reveal">
+      Seamless.AI lists Sales, Marketing, Recruiting, and RevOps as their target personas — and that's right. What's missing is the next step: <strong>each of those personas has a completely different reason the product matters to them.</strong> Same platform. Four different conversations. Click one.
+    </p>
+
+    <div class="persona-cards reveal">
+      <div class="pcard" onclick="swPersona('sdr', this)">
+        <span class="pcard-icon">&#x1F4DE;</span>
+        <div class="pcard-role">The SDR</div>
+        <div class="pcard-hint">Quota is 60 meetings. The tool lives or dies on connect rate.</div>
+      </div>
+      <div class="pcard" onclick="swPersona('mktg', this)">
+        <span class="pcard-icon">&#x1F3AF;</span>
+        <div class="pcard-role">The Marketer</div>
+        <div class="pcard-hint">Running ABM. ICP lists are stale before campaigns even launch.</div>
+      </div>
+      <div class="pcard" onclick="swPersona('recruiter', this)">
+        <span class="pcard-icon">&#x1F50D;</span>
+        <div class="pcard-role">The Recruiter</div>
+        <div class="pcard-hint">Fighting InMail fatigue. Needs a direct line to actually compete.</div>
+      </div>
+      <div class="pcard" onclick="swPersona('revops', this)">
+        <span class="pcard-icon">&#x2699;&#xFE0F;</span>
+        <div class="pcard-role">RevOps</div>
+        <div class="pcard-hint">CRM is full of contacts nobody has cleaned in two years.</div>
+      </div>
+    </div>
+
+    <div class="persona-prompt reveal" id="persona-prompt">Pick a buyer above to see how the message shifts &#8594;</div>
+
+    <div class="persona-output reveal" id="persona-output">
+      <div class="po-tag" id="po-tag"></div>
+      <div class="po-headline" id="po-headline"></div>
+      <div class="po-body" id="po-body"></div>
+    </div>
+
+    <div class="icp-wrap reveal" style="margin-top:20px;">
+      <div class="icp-head">
+        <h4>Four buyers. Four blockers. Four different keys.</h4>
+        <p>Same platform, four completely different reasons it matters.</p>
+      </div>
+      <div class="icp-scroll">
+        <table class="icp-tbl">
+          <thead>
+            <tr>
+              <th>Buyer</th>
+              <th>What they actually care about</th>
+              <th>What's blocking them</th>
+              <th>What unlocks them</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>SDR / BDR</td>
+              <td>Connect rate. More real conversations from the same number of dials.</td>
+              <td>Phone numbers that go to voicemail, the wrong person, or nobody at all.</td>
+              <td>Show them a verified cell phone number for someone they've been trying to reach. That's the moment they believe it.</td>
+            </tr>
+            <tr>
+              <td>Account Executive</td>
+              <td>Multi-threading deals. Finding the real decision-maker before it's too late.</td>
+              <td>Org charts that don't exist, or are three months out of date.</td>
+              <td>A scenario where Seamless surfaces a hidden stakeholder that saved a deal. Make it real and specific, not hypothetical.</td>
+            </tr>
+            <tr>
+              <td>B2B Marketer</td>
+              <td>Accurate ICP lists for campaigns. ABM that doesn't embarrass the team.</td>
+              <td>List decay. The contacts they built a campaign around changed jobs six months ago.</td>
+              <td>Real-time job change tracking. Lead with "your list is already stale" and then show the fix. Let them feel the pain first.</td>
+            </tr>
+            <tr>
+              <td>RevOps</td>
+              <td>Data integrity across the stack. Reports that actually reflect reality.</td>
+              <td>Stale CRM data that's invisible — not wrong enough to obviously flag, just wrong enough to quietly hurt.</td>
+              <td>Auto-enrichment that runs in the background with no babysitting required. Sell the absence of a problem, not a new feature to manage.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================
+     05 — COPY SAMPLES
+=================================================== -->
+<section id="copy">
+  <div class="section-wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Part 05</span>
+      <h2 class="sec-title">Copy samples — <em>three moments,</em><br>three different conversations</h2>
+    </div>
+
+    <p class="copy-intro reveal">
+      These aren't templates. Each one is written for a specific person at a specific moment in their day. The through-line across all three: <strong>Seamless.AI users don't buy data. They buy the confidence that the number they're about to dial is going to pick up.</strong>
+    </p>
+
+    <div class="copy-card reveal">
+      <div class="copy-topbar">
+        <span class="copy-channel">Paid Social &middot; Awareness</span>
+        <span class="copy-badge awareness">Top of funnel</span>
+      </div>
+      <div class="copy-body">
+        <div class="copy-headline">You're not bad at cold outreach. You're calling the wrong numbers.</div>
+        <div class="copy-text">The average SDR spends 21% of their week on research. Most of that time is hunting for contact info that's either wrong, stale, or just not there. Seamless.AI gives you verified cell phones and direct emails in real time, so the time you actually spend reaching out is time spent reaching the right person. Not leaving voicemails for someone who left that company eight months ago.</div>
+        <div class="copy-why"><strong>Why it works:</strong> It opens by removing blame — "you're not bad at this" — which drops defenses immediately. Then it gives them a stat specific enough to feel real (21% is a real industry benchmark). The close reframes the product not as a lead gen tool, but as a time reclamation tool. SDRs are time-poor. Lead with that.</div>
+      </div>
+    </div>
+
+    <div class="copy-card reveal">
+      <div class="copy-topbar">
+        <span class="copy-channel">Email &middot; Day 3 Activation</span>
+        <span class="copy-badge activation">Onboarding</span>
+      </div>
+      <div class="copy-body">
+        <div class="copy-headline">You signed up. Your list is still empty. Here's the only thing that matters right now.</div>
+        <div class="copy-text">Most people who try Seamless.AI spend the first session browsing. They search a name, get a result, think "yeah, okay, cool" — then close the tab. The reps who actually change their pipeline in the first week do one thing differently: they build a list before they need it. Pull 50 contacts from your top two target accounts right now. Don't overthink the qualification. Just get 50 numbers into your tool of choice. That's the whole habit. Everything else follows from there.</div>
+        <div class="copy-why"><strong>Why it works:</strong> It describes exactly what most new users do — browse, get impressed, close the tab — so they feel understood, not scolded. The ask is specific and small: 50 contacts, two accounts. Anyone can do 50. Telling them not to overthink qualification removes the last excuse not to start.</div>
+      </div>
+    </div>
+
+    <div class="copy-card reveal">
+      <div class="copy-topbar">
+        <span class="copy-channel">Sales Enablement &middot; One-Pager Hook</span>
+        <span class="copy-badge sales">Enablement</span>
+      </div>
+      <div class="copy-body">
+        <div class="copy-headline">The reps who hit quota aren't working harder. They're calling better numbers.</div>
+        <div class="copy-text">When you look at what separates the top quartile of outbound reps from the rest, it's not volume. Top performers aren't making 50% more dials. They're connecting on 40% more of them. The variable that explains most of the gap: data quality. A cell phone that actually rings. An email that doesn't bounce. A job title that's current. That's not a nice-to-have anymore — it's the whole game. Seamless.AI gives your reps the real-time data layer that turns the number they're about to dial into the right call to make.</div>
+        <div class="copy-why"><strong>Why it works:</strong> Sales managers buying for their teams respond to peer benchmarking more than feature lists. Opening with "top quartile vs. the rest" sets up a comparison they care about. The insight that it's connect rate — not dial volume — is counterintuitive enough to stop them mid-scroll. The product becomes the answer to a question they just hadn't framed correctly until now.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================
+     06 — OTHER WORK
+=================================================== -->
+<section id="work" style="border-bottom:none;">
+  <div class="section-wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Part 06</span>
+      <h2 class="sec-title">Other relevant work</h2>
+    </div>
+
+    <div class="work-grid reveal">
+
+      <a href="https://bhanuexcalibur.github.io/RevPoints_Audit/" class="work-card" target="_blank" rel="noopener">
+        <div class="work-tag">Growth audit &middot; Loyalty</div>
+        <h4>Revolut RevPoints — Growth Audit</h4>
+        <p>Full audit of a 53M dormant user gap, an interactive activation calculator, competitive table, and a 30-60-90 day plan. Closest in structure to a product launch brief — shows how I think from diagnosis to action plan.</p>
+        <span class="work-arrow">&#8594;</span>
+      </a>
+
+      <a href="https://bhanuexcalibur.github.io/Boundless-PoW/" class="work-card" target="_blank" rel="noopener">
+        <div class="work-tag">B2B messaging &middot; Multi-buyer</div>
+        <h4>Boundless — Three-Buyer Messaging Audit</h4>
+        <p>Positioning rewrite for a compliance infrastructure product across three distinct buyers: Risk Officer, CTO, and Exchange Partner. Same product, three completely different emotional registers. Closest parallel to Seamless's multi-persona challenge.</p>
+        <span class="work-arrow">&#8594;</span>
+      </a>
+
+      <a href="https://bhanuexcalibur.github.io/RelayFi_PoW/" class="work-card" target="_blank" rel="noopener">
+        <div class="work-tag">GTM brief &middot; Fintech</div>
+        <h4>Relay Financial — GTM Brief + Owner Personas</h4>
+        <p>Full GTM brief for a product launch, three owner persona breakdowns, and copy samples across paid, email, and in-product. Shows end-to-end thinking from positioning to execution — the same range this role needs.</p>
+        <span class="work-arrow">&#8594;</span>
+      </a>
+
+      <a href="https://bhanuexcalibur.github.io/Revolut-Used-Gone-Campaign/" class="work-card" target="_blank" rel="noopener">
+        <div class="work-tag">Campaign strategy &middot; Creative</div>
+        <h4>Revolut — Already Gone Campaign</h4>
+        <p>Full creative platform for Revolut's virtual single-use cards. Strategy, positioning, art direction, in-product moment, and a breach-reactive OOH activation. Shows how I move from insight to execution without losing the thread.</p>
+        <span class="work-arrow">&#8594;</span>
+      </a>
+
+      <a href="https://bhanuexcalibur.github.io/Altitude_LandingPage/" class="work-card" target="_blank" rel="noopener">
+        <div class="work-tag">Landing page &middot; PLG</div>
+        <h4>Altitude — Stablecoin Business Account</h4>
+        <p>Repositioned landing page for a product where the audience didn't yet trust the category. Translating complex infrastructure into plain language for buyers who didn't grow up speaking the product's native tongue — adjacent to Seamless's challenge with buyers who think they already know what "data tools" do.</p>
+        <span class="work-arrow">&#8594;</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE -->
+<div class="sig-block">
+  <div class="sig-inner">
+    <div>
+      <div class="sig-name">Bhanu <em>Kumar</em></div>
+      <div class="sig-details">
+        <a href="mailto:bhanukumar0902@gmail.com">bhanukumar0902@gmail.com</a><br>
+        <a href="https://linkedin.com/in/bhanuexcalibur" target="_blank" rel="noopener">linkedin.com/in/bhanuexcalibur</a> &nbsp;&middot;&nbsp;
+        <a href="https://x.com/excaliburbhanu" target="_blank" rel="noopener">@excaliburbhanu</a>
+      </div>
+    </div>
+    <div class="sig-btns">
+      <a class="sbtn pri" href="mailto:bhanukumar0902@gmail.com">
+        Get in touch
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M7.5 3.5l3 3-3 3" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="sbtn sec" href="https://drive.google.com/file/d/17Vvq02j51pcYooGT_-4-7ORyxzWdNQfO/view" target="_blank" rel="noopener">Full resume &#8594;</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// Audit tabs
+function swAudit(id, btn) {
+  document.querySelectorAll('.audit-panel').forEach(function(p){ p.classList.remove('on'); });
+  document.querySelectorAll('.ptab').forEach(function(b){ b.classList.remove('on'); });
+  document.getElementById('ap-' + id).classList.add('on');
+  btn.classList.add('on');
+}
+
+// Persona data
+var personas = {
+  sdr: {
+    tag: 'Message for: The SDR',
+    headline: 'Stop leaving voicemails for people who left that company last year.',
+    body: "Your quota doesn't care that the number was wrong. Every dial that doesn't connect is a minute you'll never get back, and a meeting that's not getting booked. Seamless.AI gives you verified cell phones and direct lines in real time, so when you pick up the phone, you're calling someone who's actually there. Not chasing a ghost through a company switchboard."
+  },
+  mktg: {
+    tag: 'Message for: The B2B Marketer',
+    headline: 'Your ICP list from three months ago is already a different company.',
+    body: "People change jobs every 18 months on average. By the time you've built a campaign, gotten creative approved, set up targeting, and hit send — a meaningful chunk of your list has moved on. Seamless.AI tracks job changes in real time and keeps your contact data current, so your ABM campaigns actually reach the people who have the budget and the title to care."
+  },
+  recruiter: {
+    tag: 'Message for: The Recruiter',
+    headline: "Great candidates don't respond to InMail. They respond to a message that found them.",
+    body: "LinkedIn InMail open rates are down across the board. The passive candidates you want — the ones not actively looking — have gotten good at ignoring the noise. Seamless.AI gives you a verified personal email or cell phone so you can reach out through a channel they actually check. You're not the tenth recruiter in their inbox. You're the one who actually tracked them down."
+  },
+  revops: {
+    tag: 'Message for: RevOps',
+    headline: "Your CRM isn't wrong. It's just quietly out of date, which is worse.",
+    body: "A contact that's clearly wrong gets flagged. A contact that's one job title out of date, with a phone number that still sometimes connects — that one just silently poisons your pipeline reporting for six months before anyone traces it back to the source. Seamless.AI auto-enriches your CRM in real time so the data your team is acting on is actually what's true today, not what was true at the end of last fiscal year."
+  }
+};
+
+function swPersona(type, card) {
+  document.querySelectorAll('.pcard').forEach(function(c){ c.classList.remove('on'); });
+  card.classList.add('on');
+  var d = personas[type];
+  document.getElementById('po-tag').textContent      = d.tag;
+  document.getElementById('po-headline').textContent = d.headline;
+  document.getElementById('po-body').textContent     = d.body;
+  document.getElementById('persona-prompt').style.display = 'none';
+  var out = document.getElementById('persona-output');
+  out.classList.add('on');
+  out.style.opacity = '0';
+  out.style.transform = 'translateY(8px)';
+  out.style.transition = 'opacity 0.28s ease, transform 0.28s ease';
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      out.style.opacity = '1';
+      out.style.transform = 'translateY(0)';
+    });
+  });
+}
+
+// Scroll reveal
+var revEls = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -20px 0px' });
+  revEls.forEach(function(el){ obs.observe(el); });
+} else {
+  revEls.forEach(function(el){ el.classList.add('in'); });
+}
+
+window.addEventListener('load', function(){
+  document.querySelectorAll('.reveal').forEach(function(el){
+    var rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) el.classList.add('in');
+  });
+});
+</script>
+</body>
+</html>
